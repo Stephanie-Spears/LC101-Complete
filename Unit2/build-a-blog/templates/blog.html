@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+{% if blogs: %}
+  <div class="container" id="blog-list">
+    {% for blog in blogs: %}
+    <h2>
+      <a href="/blog?id={{ blog.id }}">{{blog.title}}</a>
+    </h2>
+    <p>{{blog.body}}</p>
+    <hr>
+    {% endfor %}
+  </div>
+{% endif %}
+
+{% if post: %}
+  <div class="container" id="blog-post">
+    <style>
+      #blog-list {
+        display: hidden;
+      }
+      #blog-post {
+        display: block;
+      }
+      </style>
+    <h1>{{post.title}}</h1>
+    <p>{{post.body}}</p>
+  </div>
+{% endif %}
+
+
+{% endblock %}

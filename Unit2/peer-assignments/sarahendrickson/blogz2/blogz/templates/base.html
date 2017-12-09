@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+    <head>
+        <!-- <link rel="stylesheet" type="text/css" href="static/style.css" /> -->
+    </head>
+    <body>
+        <div class="background">
+            <div id="overimg">
+                <div class="button">
+                    <a href="./">HOME</a>
+                </div>
+                <div class="button">
+                    <a href="./login">LOGIN</a>
+                </div>
+                <div class="button">
+                    <a href="./signup">SIGNUP</a>
+                </div>
+                <div class="button">
+                    <a href="./newpost">POST NEW BLOG</a>
+                </div>
+                <div class="button">
+                    <a href="./blog">ALL BLOGS</a>
+                </div>
+                <div class="button">
+                    <a href="./logout">LOGOUT</a>
+                </div>
+                <div>
+                    <h2>{{title}}</h2>
+                </div>
+            </div>
+        </div>
+    <section>
+    {% with messages = get_flashed_messages(with_categories=True) %}
+
+        {% for category,message in messages %}
+            <h4 class="{{category}}">{{message}}</h4>
+        {% endfor %}
+
+    {% endwith %}
+
+    {% block content %}
+
+
+    {% endblock %}
+    </section>
+    <footer>
+        <!-- <a href="https://twitter.com/thesxesarah"><h4>Blogz App created by Sarah Hendrickson</h4></a> -->
+    </footer>
+</body>
+</html>

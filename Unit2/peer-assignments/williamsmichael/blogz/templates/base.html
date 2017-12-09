@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <title>{{ title }} | mdw</title>
+    <meta name="description" content="Portland LaunchCode LC101">
+    <meta name="author" content="mdw">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="container">
+
+    <!-- dynamic nav menu -->
+    {% if 'username' in session %}
+    <a href="/">Contributors</a>
+    <a href="/blog">Posts</a>
+    <a href="/newpost">Entry</a>
+
+    <div class="align_right">
+        Hey {{ session['username'] }}
+    </div>
+
+    {% else %}
+    <a href="/">Contributors</a>
+    <a href="/blog">Posts</a>
+
+    <div class="align_right">
+        <a href="/login">Login</a> |<a href="/signup">Register</a>
+    </div>
+    {% endif %}
+
+    <!-- dynamic template content -->
+    {% block content %}
+    {% endblock %}
+
+    <!-- logout placed near footer -->
+    {% if 'username' in session %}
+    <form action="/logout" method="post" id="logout">
+        <input class="large_button" type="submit" value="Log out">
+    </form>
+    {% endif %}
+
+    <!-- <footer class="small">&copy; 2012 (2017) mple | mdw. Designed &plus; engineered in Portland, OR</footer> -->
+
+</div>
+
+</body>
+</html>

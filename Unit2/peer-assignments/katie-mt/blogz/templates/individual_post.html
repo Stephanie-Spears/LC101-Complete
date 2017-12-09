@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!--Displays one blog post at route '/blog'
+If a user clicks on a hyperlink of the blog title from the home page ('/blog'), user will be taken to this page where
+Jinja2 will template code so that the title and blog_entry (body) of the blog is piped into this page.-->
+
+    <ul> 
+        <li>
+            <h1>{{display_blog.title}}</h1>
+            <p>{{display_blog.blog_entry}}</p>
+        </li>
+    </ul>
+
+<!--('/blog?=' + str(new_blog_entry.id))-->
+<!--<a href="/blog?={{id}}></a>-->
+{% endblock %}

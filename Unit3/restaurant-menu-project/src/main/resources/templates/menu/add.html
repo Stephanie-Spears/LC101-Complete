@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+<head th:replace="fragments :: header"></head>
+<body class="container">
+<h1 th:text="${title}">Default Title Add</h1>
+<nav th:replace="fragments :: navigation"></nav>
+
+<div>
+    <h3 th:text="${localDate}"></h3>
+</div>
+    <form method="post" th:object="${menuItem}">
+
+        <div class="form-group has-success">
+            <label class="control-label" th:for="description">Description</label>
+            <input class="form-control" th:field="*{description}" />
+            <span th:errors="*{description}" class="error text-danger"></span>
+        </div>
+
+        <div class="form-group has-success">
+            <label class="control-label" th:for="price">Price</label>
+            <input class="form-control" th:field="*{price}" />
+            <span th:errors="*{price}" class="error text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" th:for="category">Item Category</label>
+            <select class="form-control" th:field="*{category}">
+                <option th:each="itemCategory : ${itemCategories}"
+                        th:text="${itemCategory.name}"
+                        th:value="${itemCategory}"></option>
+            </select>
+            <span th:errors="*{category}" class="error text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" th:for="date">Item Date</label>
+            <input th:field="*{date}" class="form-control" type="date" name="date" id="date"/>
+            <span th:errors="*{date}" class="error text-danger"></span>
+        </div>
+
+        <input type="submit" value="Add Menu Item" />
+    </form>
+</body>
+</html>

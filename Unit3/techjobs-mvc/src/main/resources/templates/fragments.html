@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+
+<head th:fragment="head">
+
+    <!-- Bootstrap stylesheets and script -->
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+    <link th:href="@{/css/techjobs.css}" rel="stylesheet" />
+    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+
+    <title th:text="'TechJobs' + ${title == null ? '' : ' :: ' + title}">TechJobs</title>
+</head>
+
+<body>
+
+    <div th:fragment="page-header" class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a th:href="@{/}" class="navbar-brand">TechJobs</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a th:href="@{/search}">Search</a></li>
+                    <li><a th:href="@{/list}">List</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div th:fragment="jobList" class="job-listing">
+        <div th:if="${jobs} and ${jobs.size()}">
+            <h3 th:text="${jobs.size()} + ' Result(s)'"></h3>
+            <div th:each="job : ${jobs}">
+                <table class="job-listing">
+                    <tr th:each="item : ${job.entrySet()}">
+                        <td th:text="${#strings.capitalizeWords(item.getKey())}"></td>
+                        <td th:unless="${item.key.equals('name')}">
+                            <a  th:href="@{/list/jobs(column=${item.key},value=${item.value})}"
+                                th:text="${item.value}"></a>
+                        </td>
+                        <td th:if="${item.key.equals('name')}" th:text="${item.value}"></td>
+                    </tr>
+                </table>
+                <hr />
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+</html>

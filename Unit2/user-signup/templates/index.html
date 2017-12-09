@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <form method="POST">
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <label for="username">Username</label>
+          </td>
+          <td>
+          <input type="text" name="username" value="{{request.form['username']}}">
+          {% if error=="Password error and username error" or error == "Username error" or error == "Username and Password and Verify error" or error == "Username and Password error"%}
+          <span class="error">Invalid Username</span>
+          {% endif %}
+        </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="password">Password</label>
+          </td>
+          <td>
+            <input type="password" name="password">
+            {% if error=="Password error and username error" or error == "Password error" or error == "Username and Password and Verify error" or error == "Username and Password error" %}
+            <span class="error">Invalid Password</span>
+            {% endif %}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="verify">Verify Password</label>
+          </td>
+          <td>
+            <input type="password" name="verify">
+            {% if error == "Verify error" or error == "Username and Password and Verify error" %}
+            <span class="error">Passwords Do Not Match</span>
+            {% endif %}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="email">Email (optional)</label>
+          </td>
+          <td>
+            <input name="email" type="text" value="{{request.form['email']}}">
+            {% if error == "Email error" %}
+            <span class="error">Email invalid</span>
+            {% endif %}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <input type="submit">
+  </form>
+
+{% if error %}
+  <style type="text/css">
+      .error {
+          display: inline-block;
+        }
+  </style>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+    <head>
+        <link rel="stylesheet" type="text/css" href="static/style.css" />
+    </head>
+{% block content %}
+    <form method='post'>
+
+
+    {% if blogs|length == 0 %}
+    <p>No blogs yet! <a href="./newpost">Start blogging!</a></p>
+    {% else %}
+
+            {% for blog in blogs %}
+                {% if title == "Blogz!": %}            
+                    <h3><a href="./blog?id={{ blog.id }}">{{ blog.title }}</a></h3>
+                {% endif %}
+        <h5>{{ blog.pub_date }}</h5>
+        <p>{{ blog.content }}</p>
+        <p>written by <a href="./blog?user={{ blog.owner.id }}">{{ blog.owner.username }}</a></p>
+
+        <hr />
+            {% endfor %}
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,14 @@
+Elevator pitch:
+For	(people)
+Who	(goals)
+This	(provides value) ->	Features (ie. Map/Location/Beer Location)(UI, GPS, JSON, DB)
+
+
+Technology Stack (language/framework & dev)
+Knowns(things taught in class, etc.)
+Unknowns(things you want to learn)
+
+Admin U/I->update database, need GPS (extra goal: deliver JSON api—so instead of returning html view template, return json view template)
+
+
+Team size ~ 4 people

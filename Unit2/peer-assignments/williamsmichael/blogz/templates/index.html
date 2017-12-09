@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Blogz Contributors</h1>
+
+{% if contributors|length == 0 %}
+
+<p>No contributors, yet...</p>
+<p>Become a contributor today, <a href="/signup">Signup here</a></p>
+{% else %}
+
+    {% for contributor in contributors %}
+    <p>{{ contributor.username }} <span class="bubble">{{ contributor.blogs|length }}</span>
+
+        {% if contributor.blogs|length == 0 %}
+            <a class="small disabled">View posts</a>
+
+        {% else %}
+            <a href="/blog?user={{ contributor.id }}" class="small">View posts</a>
+        {% endif %}
+    </p>
+    
+    {% endfor %}
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<div class="jumbotron text-center">
+    <h1>Welcome!</h1>
+    <span th:text="${title}">Default Title</span>
+</div>
+
+    <nav th:replace="fragments :: navigation"></nav>
+
+
+</body>
+</html>

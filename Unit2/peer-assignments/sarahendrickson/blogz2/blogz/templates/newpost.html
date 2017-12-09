@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+    <head>
+        <link rel="stylesheet" type="text/css" href="static/style.css" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+       
+    </head>
+{% block content %}
+<form action="/newpost" method="post">
+    <table class="prettyTable">
+        <tr>
+            <td><label for="title">Create a blog title:</label></td>
+            <td>
+                <input name="title" type="text">
+            </td>
+        </tr>
+        <tr>
+            <td><label for="content">Blog away:</label></td>
+            <td>
+                <textarea id="textareaChars" name="content" cols="70" rows="7"></textarea>
+            </td>
+        </tr>
+    </table>
+    <div id="wrapper">
+        <span id="chars">500</span>
+    </div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="static/coolscripts.js"></script>
+<section>
+    <div id="wrapper">
+        <input type="submit" value="Add Entry!">
+    </div>
+</section>
+</form>
+{% endblock %}

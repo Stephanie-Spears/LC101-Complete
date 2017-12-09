@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Blogz Login</h1>
+<p>If you do not have an account, <a href="/signup">Signup here</a></p>
+
+<form action"/newpost" method="post">
+    <label>
+        Username:
+        <input type="text" name="username" value="{{ username }}" autofocus>
+    </label>
+
+    <!-- flash message -->
+    {% with messages = get_flashed_messages(category_filter=["error_username"]) %}
+    {% if messages %}
+    {% for msg in messages %}
+    <p class="error">{{ msg }}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <label>
+        Password:
+        <input type="password" name="password" value="{{ password }}">
+    </label>
+
+    <!-- flash message -->
+    {% with messages = get_flashed_messages(category_filter=["error_password"]) %}
+    {% if messages %}
+    {% for msg in messages %}
+    <p class="error">{{ msg }}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <input type="submit" value="Login">
+
+</form>
+
+{% endblock %}
+
+

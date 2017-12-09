@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>{{ user.email }}</h1>
+
+{% if user_posts|length == 0 %}
+
+<p>No posts, yet...</p>
+{% else %}
+
+    {% for entry in user_posts|sort(attribute='created', reverse=True) %}
+    <h2><a href="/blog?id={{ entry.id }}">{{ entry.title }}</a></h2>
+    <p class="preserve_whitespace">{{ entry.body }}</p>
+    <p class="small">Contributor: <a href="/blog?user={{ entry.owner.id }}">{{ entry.owner.username }}</a></p>
+    <p class="small">{{ entry.created }}</p>
+    <hr>
+
+    {% endfor %}
+{% endif %}
+
+{% endblock %}

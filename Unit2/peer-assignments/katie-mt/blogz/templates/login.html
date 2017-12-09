@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Log in to your Blog Space!</h1>
+<form action="/login" method="post">
+    <table>
+        <tr>
+            <td><label for="username">Username</label></td>
+            <td>
+                <input name="username" type="Username" value="{{ username }}">
+            </td>
+        </tr>
+        <tr>
+            <td><label for="password">Password</label></td>
+            <td>
+                <input name="password" type="password">
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Login">
+    <table>
+        <td>
+            <h5>
+                <p>Don't have an account?</p>
+            </h5>
+        </td>
+        <td>
+            <h5>
+                <a href="/signup">Create one!</a>
+            </h5>
+        </td>
+    </table>
+</form>
+<body>
+{% with messages = get_flashed_messages() %}
+    <ul>
+    {% for message in messages %}
+        <li>{{message}}</li>
+    {% endfor %}
+    </ul>
+{% endwith%}
+
+
+{% endblock %}
+
+</body>
+</html>

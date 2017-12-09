@@ -1,0 +1,46 @@
+<!doctype html>
+
+<html>
+    <head>
+        {% if 'username' in session %}
+            {{session['username']}}
+            <form action ="/logout" method="post" id='logout'>
+                <input type = "submit" value = "Log Out" >
+            </form>
+            <table>
+                <td>
+                    <h5>
+                        <a href="/">Home</a>
+                    </h5>
+                </td>
+                <td>
+                    <h5>
+                        <a href="/blog">Main Blog Page</a>
+                    </h5>
+                </td>
+                <td>
+                    <h5>
+                        <a href="/newpost">Add a Blog Entry</a>
+                    </h5>
+                </td>
+            </table>
+        {% else %}
+                </h5>
+                    <div align="right">
+                    <a href="/login">Login</a>
+                    </div>
+                </h5>
+        {% endif %}
+            <h3>
+                <title>{{title}}</title>
+            </h3>
+    </head>
+<body>
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>
+
+
